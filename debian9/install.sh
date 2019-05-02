@@ -148,27 +148,3 @@ echo -e "[freetds]\r\ndescription    = v0.63 with protocol v8.0\r\ndriver    = /
 echo "Configuração do Drive ODBC finalizada...\n\r"
 
 printf "\n\rSCRIPT FINALIZADO ... \n\r"
-
-if [ -z "$1" ]
-then
-  QT_VERSION=5.12.2
-else
-  QT_VERSION=$1
-fi
-QT_VERSION_FRIST="$(cut -d'.' -f1 <<<"$QT_VERSION")"
-QT_VERSION_SECOND="$(cut -d'.' -f2 <<<"$QT_VERSION")"
-QT_VERSION_MAJOR=$QT_VERSION_FRIST.$QT_VERSION_SECOND
-
-printf "VERSAO QT A SER INSTALADA: "$QT_VERSION"\n"
-
-# Compile and install Qt Base
-
-QT_DIST=/home/$(whoami)/Qt"$QT_VERSION"
-QT_BASE_SRC=https://download.qt.io/official_releases/qt/"$QT_VERSION_MAJOR"/"$QT_VERSION"/submodules/qtbase-opensource-src-"$QT_VERSION".tar.xz
-QT_BASE_DIR=/qtbase-opensource-src-"$QT_VERSION"
-
-wget https://download.qt.io/archive/qt/${QT_VERSION_MAJOR}/${QT_VERSION}/qt-opensource-linux-x64-${QT_VERSION}.run
-
-chmod +x qt-opensource-linux-x64-${QT_VERSION}.run
-
-./qt-opensource-linux-x64-${QT_VERSION}.run --script qt-noninteractive.qs  #-platform minimal
