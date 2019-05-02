@@ -47,36 +47,6 @@ sudo ln -s /usr/share/zoneinfo/America/Fortaleza /etc/localtime
 
 printf "\n\rINICIANDO SCRIPT DE INSTALAÇÃO PARA DESENVOLVEDORES DA IT HAPPENS - GRUPO MATEUS ... \n\r"
 
-# instalar o icecc - compilação distribuida
-if ! sudo apt install icecc -y
-then
-    printf "Não foi possível instalar o icecc\n\r"
-    exit 1
-fi
-printf "Instalação do icecc finalizada...\n\r"
-
-# instalaca  do sublime
-if ! sudo apt install sublime-text -y
-then
-    printf "Não foi possível instalar o sublime\n\r"
-    exit 1
-fi
-printf "Instalação do sublime finalizada...\n\r"
-
-# sistema de controle de versões
-if ! sudo apt install git-all -y
-then
-    printf "Não foi possível instalar o git\n\r"
-    exit 1
-fi
-printf "Instalação do git finalizada...\n\r"
-
-if ! sudo apt-get install yakuake -y
-then
-    printf "Não foi possível instalar o terminal yakuake\n\r"
-    exit 1
-fi
-printf "Instalação do git yakuake...\n\r"
 
 if ! sudo apt-get install htop -y
 then
