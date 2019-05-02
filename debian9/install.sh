@@ -44,9 +44,9 @@ shift $((OPTIND - 1))
 if [ "$sshParam" -eq "0" ];
 then
 
-    unlink /etc/localtime
+    sudo unlink /etc/localtime
 
-    ln -s /usr/share/zoneinfo/America/Fortaleza /etc/localtime
+    sudo ln -s /usr/share/zoneinfo/America/Fortaleza /etc/localtime
 
 	printf "\n\rINICIANDO SCRIPT DE INSTALAÇÃO PARA DESENVOLVEDORES DA IT HAPPENS - GRUPO MATEUS ... \n\r"
 
@@ -138,15 +138,6 @@ then
 		exit 1
 	fi
 	printf "Instalação do git htop...\n\r"
-
-	if ! sudo apt-get install openssh-server -y
-	then
-		printf "Não foi possível instalar o terminal openssh-server\n\r"
-		exit 1
-	fi
-	printf "Instalação do git openssh-server...\n\r"
-
-	sudo service sshd start
 
 	echo "Configuração do IECC iniciada...\n\r"
 	sudo sed -i 's/ICECC_NETNAME=""/ICECC_NETNAME="node"/' /etc/icecc/icecc.conf
