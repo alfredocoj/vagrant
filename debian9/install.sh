@@ -101,42 +101,6 @@ then
 	fi
 	printf "Instalação das bibliotecas para exibição gráficas finalizada...\n\r"
 
-
-	# Install basic software support
-	if ! sudo apt update && sudo apt install --yes software-properties-common
-	then
-		printf "Não foi possível instalar basic software support\n\r"
-		exit 1
-	fi
-	printf "Instalação dos basic software support foi finalizada...\n\r"
-
-
-	# removendo openjdk
-	if ! sudo apt remove openjdk* -y
-	then
-		printf "Não foi possível remover o openjdk ou ele não está instalado em seu computador\n\r"
-		exit 1
-	fi
-	printf "A remoção do openjdk final\n\r"
-
-	# Add the JDK 8 and accept licenses (mandatory)
-	add-apt-repository ppa:webupd8team/java && \
-	    echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
-	    echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections
-
-	# Accept the Oracle License
-	echo "oracle-java7-installer  shared/accepted-oracle-license-v1-1 boolean true" > /tmp/oracle-license-debconf
-	/usr/bin/debconf-set-selections /tmp/oracle-license-debconf
-	rm /tmp/oracle-license-debconf
-
-	# Install Java 8
-	if ! sudo apt update && sudo apt install --yes oracle-java8-installer
-	then
-		printf "Não foi possível instalar Java 8 Oracle\n\r"
-		exit 1
-	fi
-	printf "Instalação do Java 8 Oracle finalizada...\n\r"
-
 	# instalar o icecc - compilação distribuida
 	if ! sudo apt install icecc -y
 	then
