@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 # Passo a passo para utilizar este script.
 # 1. Abra o terminal linux através do atalho: Crt+T
