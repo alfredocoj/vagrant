@@ -16,6 +16,7 @@ Vagrant.configure("2") do |config|
   end
   config.vm.provision "shell" do |s|
     s.inline = "echo $1"
+    s.inline = "sudo apt-get install htop -y"
     s.args   = "'hello, world!'"
   end
 end
