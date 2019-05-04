@@ -14,20 +14,8 @@ Vagrant.configure("2") do |config|
     v.memory = 1024
     v.cpus = 2
   end
-  config.push.define "local-exec" do |push|
-    push.inline = <<-SCRIPT
-
-      printf "\n\rINICIANDO SCRIPT DE INSTALAÇÃO PARA DESENVOLVEDORES DA IT HAPPENS - GRUPO MATEUS ... \n\r"
-
-
-      if ! sudo apt-get install htop -y
-      then
-          printf "Não foi possível instalar o terminal htop\n\r"
-          exit 1
-      fi
-      printf "Instalação do git htop...\n\r"
-
-      printf "\n\rSCRIPT FINALIZADO ... \n\r"
-    SCRIPT
+  config.vm.provision "shell" do |s|
+    s.inline = "echo $1"
+    s.args   = "'hello, world!'"
   end
 end
