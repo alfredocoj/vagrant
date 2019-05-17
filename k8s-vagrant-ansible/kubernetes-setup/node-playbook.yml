@@ -46,6 +46,7 @@
     - name: Remove swapfile from /etc/fstab
       mount:
         name: "{{ item }}"
+        src: '{{ item }}'
         fstype: swap
         state: absent
       with_items:

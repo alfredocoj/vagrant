@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
         v.memory = 1024
         v.cpus = 2
     end
-    config.vm.boot_timeout = 600
+    config.vm.boot_timeout = 6000
 
     config.vm.define "k8s-master" do |master|
         master.vm.box = IMAGE_NAME
@@ -23,9 +23,10 @@ Vagrant.configure("2") do |config|
             ansible.playbook = "kubernetes-setup/master-playbook.yml"
             ansible.extra_vars = {
                 node_ip: "10.121.2.210",
+                ansible_python_interpreter: "/usr/bin/python2"
             }
         end
-        master.vm.boot_timeout = 600
+        master.vm.boot_timeout = 6000
     end
 
     (1..N).each do |i|
@@ -37,9 +38,10 @@ Vagrant.configure("2") do |config|
                 ansible.playbook = "kubernetes-setup/node-playbook.yml"
                 ansible.extra_vars = {
                     node_ip: "10.121.2.#{i + 207}",
+                    ansible_python_interpreter: "/usr/bin/python2"
                 }
             end
-            node.vm.boot_timeout = 600
+            node.vm.boot_timeout = 6000
         end
     end
 end
