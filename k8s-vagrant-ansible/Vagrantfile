@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
         master.vm.provision "ansible" do |ansible|
             ansible.playbook = "kubernetes-setup/master-playbook.yml"
             ansible.extra_vars = {
-                node_ip: "10.121.2.208",
+                node_ip: "10.121.2.207",
                 ansible_python_interpreter: "/usr/bin/python2"
             }
         end
@@ -44,4 +44,5 @@ Vagrant.configure("2") do |config|
             node.vm.boot_timeout = 6000
         end
     end
+
 end

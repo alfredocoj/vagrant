@@ -82,7 +82,7 @@
           - kubectl
 
     - name: Initialize the Kubernetes cluster using kubeadm
-      command: kubeadm init --apiserver-advertise-address="10.121.2.208" --apiserver-cert-extra-sans="10.121.2.207"  --node-name k8s-master --pod-network-cidr=10.121.0.0/16
+      command: kubeadm init --apiserver-advertise-address="10.121.2.207" --apiserver-cert-extra-sans="10.121.2.207"  --node-name k8s-master --pod-network-cidr=10.121.0.0/16
 
     - name: Setup kubeconfig for vagrant user
       command: "{{ item }}"
@@ -99,12 +99,13 @@
       command: kubeadm token create --print-join-command
       register: join_command
 
-    - name: set join command
-      set_fact:
-        join_command: "{{ join_command.stdout_lines[0] }}"
+#    - name: set join command
+#      set_fact:
+#        join_command: "{{ join_command.stdout_lines[0] }}"
 
     - name: Copy join command to local file
-      local_action: copy content="{{ join_command.stdout_lines[0] }}" dest="join-command" mode=0777
+      become: false
+      local_action: copy content="{{ join_command.stdout_lines[0] }}" dest="./join_command" mode=0740
 
   handlers:
     - name: docker status
