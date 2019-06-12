@@ -57,8 +57,30 @@
       command: swapoff -a
       when: ansible_swaptotal_mb > 0
 
+    - name: Add an apt signing key for Kubernetes
+      apt_key:
+        url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+        state: present
+
+    - name: Adding apt repository for Kubernetes
+      apt_repository:
+        repo: deb https://apt.kubernetes.io/ kubernetes-xenial main
+        state: present
+        filename: kubernetes.list
+
+    - name: Install Kubernetes binaries
+      apt:
+        name: "{{ packages }}"
+        state: present
+        update_cache: yes
+      vars:
+        packages:
+          - kubelet
+          - kubeadm
+          - kubectl
+
     - name: Copy the join command to server location
-      copy: src=../join_command dest=/tmp/join-command.sh mode=0740
+      copy: src=./join_command dest=/tmp/join-command.sh mode=0740
 
     - name: Join the node to cluster
       command: sh /tmp/join-command.sh
@@ -66,4 +88,3 @@
   handlers:
     - name: docker status
       service: name=docker state=started
-

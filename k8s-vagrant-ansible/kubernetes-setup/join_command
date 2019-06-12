@@ -1,0 +1,1 @@
+kubeadm join 10.121.2.207:6443 --token funvpa.28q1zif9ls8he4c2     --discovery-token-ca-cert-hash sha256:827c9e7a8fef6dd110eb7f60545288a94ea2e32922727d6c84f02c5ed826718a 
