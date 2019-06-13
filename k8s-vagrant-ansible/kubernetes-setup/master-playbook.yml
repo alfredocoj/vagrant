@@ -91,9 +91,12 @@
         - cp -i /etc/kubernetes/admin.conf /home/vagrant/.kube/config
         - chown vagrant:vagrant /home/vagrant/.kube/config
 
-    - name: Install calico pod network
+    #- name: Install calico pod network
+    - name: Install Weave pod network
       become: false
-      command: kubectl create -f https://docs.projectcalico.org/v3.4/getting-started/kubernetes/installation/hosted/calico.yaml
+      command: kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=Q2xpZW50IFZlcnNpb246IHZlcnNpb24uSW5mb3tNYWpvcjoiMSIsIE1pbm9yOiIxNCIsIEdpdFZlcnNpb246InYxLjE0LjMiLCBHaXRDb21taXQ6IjVlNTNmZDZiYzE3YzBkZWM4NDM0ODE3ZTY5YjA0YTI1ZDhhZTBmZjAiLCBHaXRUcmVlU3RhdGU6ImNsZWFuIiwgQnVpbGREYXRlOiIyMDE5LTA2LTA2VDAxOjQ0OjMwWiIsIEdvVmVyc2lvbjoiZ28xLjEyLjUiLCBDb21waWxlcjoiZ2MiLCBQbGF0Zm9ybToibGludXgvYW1kNjQifQpTZXJ2ZXIgVmVyc2lvbjogdmVyc2lvbi5JbmZve01ham9yOiIxIiwgTWlub3I6IjE0IiwgR2l0VmVyc2lvbjoidjEuMTQuMyIsIEdpdENvbW1pdDoiNWU1M2ZkNmJjMTdjMGRlYzg0MzQ4MTdlNjliMDRhMjVkOGFlMGZmMCIsIEdpdFRyZWVTdGF0ZToiY2xlYW4iLCBCdWlsZERhdGU6IjIwMTktMDYtMDZUMDE6MzY6MTlaIiwgR29WZXJzaW9uOiJnbzEuMTIuNSIsIENvbXBpbGVyOiJnYyIsIFBsYXRmb3JtOiJsaW51eC9hbWQ2NCJ9Cg=="
+      #command: kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')" 
+    # kubectl create -f https://docs.projectcalico.org/v3.4/getting-started/kubernetes/installation/hosted/calico.yaml
 
     - name: Generate join command
       command: kubeadm token create --print-join-command

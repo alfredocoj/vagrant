@@ -11,3 +11,5 @@ https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.ht
 https://medium.com/devops-world/introduction-to-ansible-78ca97905502
 
 https://kubernetes.io/blog/2019/03/15/kubernetes-setup-using-ansible-and-vagrant/
+
+[resolvendo bug on weave-net](https://github.com/kubernetes/kops/issues/4327)
