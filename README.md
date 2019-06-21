@@ -44,3 +44,8 @@ https://www.vagrantup.com/docs/virtualbox/configuration.html
 
 https://app.vagrantup.com/generic/boxes/debian9
 
+https://relativkreativ.at/articles/how-to-build-a-vagrant-base-box-from-a-virtualbox-vm
+
+https://www.vagrantup.com/docs/virtualbox/boxes.html
+
+https://www.vagrantup.com/docs/boxes/base.html
