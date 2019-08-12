@@ -1,4 +1,4 @@
-## Intruções de Instalação do Ansible
+## Ansible Installation Instructions
 
 ```
 sudo apt-get install software-properties-common python-software-properties -y
